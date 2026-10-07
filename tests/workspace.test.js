@@ -62,6 +62,19 @@ test('extra metadata from imported passports is excluded from share URLs', async
   assert.equal((await verifyPassport(shared)).valid, true);
 });
 
+test('large Unicode histories stop at the import byte limit without changing the saved version', async () => {
+  const large = { ...event, title: '界'.repeat(240), actor: '界'.repeat(240), location: '界'.repeat(240) };
+  let current = await createV2(product, large);
+  let rejected = false;
+  for (let index = 1; index < 50; index++) {
+    try { current = await appendEvent(current, large); }
+    catch (error) { assert.match(error.message, /100 КБ/); rejected = true; break; }
+  }
+  assert.equal(rejected, true);
+  assert.ok(new TextEncoder().encode(JSON.stringify(current)).length <= 100_000);
+  assert.equal((await verifyPassport(current)).valid, true);
+});
+
 test('password-protected keys restore the same signer; wrong passwords and tampering fail', async () => {
   assert.equal(validProfile(identity.profile), true);
   const privateKey = await unlockIdentity(identity.profile, password);

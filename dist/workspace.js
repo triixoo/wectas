@@ -165,7 +165,7 @@ $('#delete-passport').addEventListener('click', () => {
 $('#export-json').addEventListener('click', () => run(async () => {
   if (!passport) return;
   const name = passport.product.batch.replace(/[^a-zA-Z0-9_-]/g, '_').slice(0,80) || 'batch';
-  download(JSON.stringify(passport, null, 2), 'wectas-' + name + '.json'); status('JSON подготовлен. Локальные документы и закрытые ключи в него не входят.');
+  download(JSON.stringify(passport), 'wectas-' + name + '.json'); status('JSON подготовлен. Локальные документы и закрытые ключи в него не входят.');
 }));
 $('#share-passport').addEventListener('click', () => run(async () => {
   const url = passportURL(await encodePassport(passport), location.href);

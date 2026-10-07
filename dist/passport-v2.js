@@ -39,6 +39,7 @@ async function addRecord(passport, event, identity) {
   record.hash = await sha256(payload(passport, record));
   if (identity) record.signature = await signHash(identity.privateKey, record.hash);
   passport.records.push(record); passport.eventCount = passport.records.length;
+  if (new TextEncoder().encode(JSON.stringify(passport)).length > 100_000) throw new Error('Паспорт достиг лимита 100 КБ. Сохраните текущую версию; новые события в неё уже не поместятся.');
   return passport;
 }
 export async function createV2(product, event, identity = null) {
