@@ -4,7 +4,7 @@ Wectas is a Kazakhstan blockchain startup exploring product provenance. The cano
 
 ## Current architecture
 
-Plain HTML, CSS, and JavaScript modules; no build or install is needed. Tests: `npm test`. Local preview: `npm run dev`. Use relative asset paths so project Pages URLs under `/wectas/` work.
+Plain HTML, CSS, and JavaScript modules; no build or install is needed. Tests: `npm test` (legacy passports, signatures, tampering, encryption, backup validation, sharing and mocked wallet RPC). Browser QA is also required for workspace flows; unit RPC fixtures do not prove a real testnet transaction succeeded. Local preview: `npm run dev`. Use relative asset paths so project Pages URLs under `/wectas/` work.
 
 Read `research/MARKET.md`, `BACKLOG.md`, and `CHANGELOG.md` before improving the product. Keep research facts separate from working hypotheses and demo data. Cite primary sources near claims, record retrieval dates, and never equate export volume with software market size.
 
@@ -12,9 +12,9 @@ Preserve the olive-green orbital logo with W inside its central hole. `dist/wect
 
 ## Product truth
 
-Passports currently use browser-local SHA-256 chains. They have no blockchain anchor, participant signatures, third-party certification or legal status. Valid hashes confirm internal consistency, not truthful provenance, and can be recomputed by an attacker. Maintain these boundaries in copy and exported files.
+Version 1 examples use unsigned SHA-256 chains. Version 2 supports append-only signed events using Web Crypto ECDSA P-256, password-encrypted local signing keys, byte hashes of documents, and optional Sepolia anchors via an EIP-1193 wallet. Signature validity proves a key signed a statement, not legal identity or truthful provenance. Trust fingerprints only after explicit independent manual comparison. An imported transaction reference is unverified until checked against the wallet RPC transaction, receipt and canonical block. Never label testnet anchoring as production certification; no real anchor transaction has been submitted by the development agent.
 
-Never place customer documents, personal information or commercial secrets into shareable URLs or a public repository. User-created drafts use explicit export/share actions; no automatic persistent storage. Render imported text with textContent, validate schemas, bound file sizes, and surface malformed data as errors.
+Never place customer documents, personal information or commercial secrets into shareable URLs or a public repository. The user requested all useful functionality without a server. New passports and event versions save locally in IndexedDB with clear notice; imported/shared passports require explicit Save. Documents remain local; public URLs contain only public fields, signatures and document hashes/types. Keep publicPassport whitelisting so extra metadata cannot leak into links. Backups are password-encrypted and validated completely before an atomic merge. Render imported text with textContent, validate schemas, bound file sizes, and surface malformed data as errors.
 
 ## Iteration workflow
 

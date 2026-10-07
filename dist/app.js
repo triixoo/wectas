@@ -1,4 +1,5 @@
 import { createPassport, verifyPassport, products } from './passport.js';
+import { pilotMessage, telegramDraft } from './contact.js';
 
 const $ = selector => document.querySelector(selector);
 const $$ = selector => [...document.querySelectorAll(selector)];
@@ -112,7 +113,7 @@ $$('[data-close]').forEach(button => button.addEventListener('click', () => butt
 $$('dialog').forEach(dialog => {
   dialog.addEventListener('click', event => { if (event.target !== dialog) return; const rect = dialog.getBoundingClientRect(); if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close(); });
 });
-$('#pilot-dialog').addEventListener('close', () => { $('#pilot-form').reset(); setText('#form-status', ''); });
+$('#pilot-dialog').addEventListener('close', () => { $('#pilot-form').reset(); $('#pilot-send').hidden = true; $('#pilot-message').hidden = true; setText('#form-status', ''); });
 $('#pilot-form').addEventListener('submit', event => {
   event.preventDefault();
   const data = Object.fromEntries(new FormData(event.currentTarget));
@@ -120,9 +121,23 @@ $('#pilot-form').addEventListener('submit', event => {
     data[field] = data[field].trim();
     if (!data[field]) { event.currentTarget.elements.namedItem(field).focus(); setText('#form-status', 'Заполните поля текстом, пожалуйста.'); return; }
   }
-  downloadJSON({ project: 'Wectas', type: 'pilot-brief', createdAt: new Date().toISOString(), ...data, submitted: false, notice: 'Бриф скачан локально. Команде Wectas не отправлен.' }, 'wectas-pilot-brief.json');
-  setText('#form-status', 'Бриф подготовлен к скачиванию. Он остаётся у вас и пока не отправлен команде.');
+  const message = pilotMessage(data);
+  $('#pilot-message').value = message; $('#pilot-message').hidden = false;
+  $('#pilot-send').href = telegramDraft(message); $('#pilot-send').hidden = false;
+  setText('#form-status', 'Сообщение готово. Откройте чат @kashyyn и отправьте его в Telegram. Сайт не подтверждает доставку.');
 });
+$('#pilot-copy').addEventListener('click', async () => {
+  const message = $('#pilot-message');
+  if (message.hidden) { setText('#form-status', 'Сначала подготовьте заявку.'); return; }
+  try { await navigator.clipboard.writeText(message.value); setText('#form-status', 'Текст скопирован. Отправьте его @kashyyn.'); }
+  catch { message.focus(); message.select(); setText('#form-status', 'Скопируйте выделенный текст вручную.'); }
+});
+$('#pilot-download').addEventListener('click', () => {
+  if ($('#pilot-message').hidden) { setText('#form-status', 'Сначала подготовьте заявку.'); return; }
+  downloadJSON({ project: 'Wectas', type: 'pilot-brief', message: $('#pilot-message').value, createdAt: new Date().toISOString(), submitted: false }, 'wectas-pilot-brief.json');
+});
+$('#pilot-form').addEventListener('input', () => { $('#pilot-send').hidden = true; $('#pilot-message').hidden = true; setText('#form-status', ''); });
+$('#pilot-form button[type=submit]').disabled = false;
 
 // Draw a dimensional network directly; no external image or WebGL dependency.
 function startNetwork() {

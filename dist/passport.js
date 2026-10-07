@@ -1,14 +1,17 @@
-// Deterministic encoding shared by creation, verification, and exported passports.
-export function canonical(value) {
-  if (value === null || typeof value !== 'object') return JSON.stringify(value);
-  if (Array.isArray(value)) return '[' + value.map(canonical).join(',') + ']';
-  return '{' + Object.keys(value).sort().map(key => JSON.stringify(key) + ':' + canonical(value[key])).join(',') + '}';
-}
+import { sha256, isDate } from './core.js';
+import { validV2, verifyV2 } from './passport-v2.js';
+export { canonical, sha256 } from './core.js';
 
-export async function sha256(value) {
-  if (!globalThis.crypto?.subtle) throw new Error('Для SHA-256 откройте сайт по HTTPS или на localhost.');
-  const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(canonical(value)));
-  return Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2, '0')).join('');
+// Whitelist only the public format. Extra import/export metadata must never enter share URLs.
+export function publicPassport(value) {
+  if (!hasValidSchema(value)) throw new Error('Неверный формат паспорта.');
+  const keys = value.format === 'wectas-passport-v2'
+    ? ['format', 'id', 'demo', 'network', 'product', 'eventCount', 'records', 'anchors']
+    : ['format', 'demo', 'network', 'product', 'eventCount', 'records'];
+  const result = Object.fromEntries(keys.map(key => [key, structuredClone(value[key])]));
+  if (value.format === 'wectas-passport-v1') result.records = result.records.map(record =>
+    Object.fromEntries(['index', 'event', 'previousHash', 'hash'].map(key => [key, record[key]])));
+  return result;
 }
 
 function payload(passport, record) {
@@ -30,6 +33,7 @@ export async function createPassport(product, events, { demo = true } = {}) {
 }
 
 export function hasValidSchema(passport) {
+  if (passport?.format === 'wectas-passport-v2') return validV2(passport);
   const text = value => typeof value === 'string' && value.trim().length > 0 && value.length <= 240;
   const hash = value => typeof value === 'string' && /^[a-f0-9]{64}$/.test(value);
   const product = passport?.product;
@@ -41,10 +45,11 @@ export function hasValidSchema(passport) {
     passport.records.every(record => record && typeof record === 'object' && Number.isInteger(record.index) &&
       hash(record.hash) && hash(record.previousHash) && record.event && Object.keys(record.event).length === 4 &&
       ['title','actor','location','date'].every(key => text(record.event[key])) &&
-      /^\d{4}-\d{2}-\d{2}$/.test(record.event.date) && Number.isFinite(Date.parse(record.event.date)));
+      isDate(record.event.date));
 }
 
 export async function verifyPassport(passport) {
+  if (passport?.format === 'wectas-passport-v2') return verifyV2(passport);
   if (!hasValidSchema(passport)) {
     return { valid: false, index: null, reason: 'Неверный формат паспорта' };
   }
