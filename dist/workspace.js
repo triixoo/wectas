@@ -115,5 +115,6 @@ async function openFromURL(){
   catch(error){if(generation===version)status(error.message,true);}
 }
 clearPreview();
+$('#passport-form button[type="submit"]').disabled = false;
 window.addEventListener('hashchange',openFromURL);
 openFromURL();
