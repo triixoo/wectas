@@ -1,0 +1,8 @@
+[
+  {"id":"kazakhstan-agri","name":"МСХ Казахстана: экспорт АПК за 2025 год","url":"https://www.gov.kz/memleket/entities/moa/press/news/details/1175629?lang=ru","type":"market"},
+  {"id":"circularise","name":"Circularise","url":"https://www.circularise.com/","type":"competitor"},
+  {"id":"origintrail","name":"OriginTrail","url":"https://origintrail.io/","type":"infrastructure"},
+  {"id":"gs1-epcis","name":"GS1 EPCIS","url":"https://ref.gs1.org/standards/epcis/archive","type":"standard"},
+  {"id":"naqty-onim","name":"Минздрав: Naqty Onim","url":"https://www.gov.kz/memleket/entities/dsm/press/news/details/1004753?lang=ru","type":"local-alternative"},
+  {"id":"espr","name":"Еврокомиссия: ESPR","url":"https://environment.ec.europa.eu/strategy/circular-economy/ecodesign-sustainable-products-regulation_en","type":"regulation"}
+]

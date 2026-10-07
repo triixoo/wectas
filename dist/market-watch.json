@@ -1,0 +1,72 @@
+{
+  "checkedAt": "2026-10-07T08:45:10.791Z",
+  "meaning": "Changes are page-level signals, not verified market facts.",
+  "sources": [
+    {
+      "id": "kazakhstan-agri",
+      "name": "МСХ Казахстана: экспорт АПК за 2025 год",
+      "url": "https://www.gov.kz/memleket/entities/moa/press/news/details/1175629?lang=ru",
+      "type": "market",
+      "status": "new",
+      "httpStatus": 200,
+      "contentHash": "4d1cf5cbfde36a0fefe6bf207ecebc1ce584bb5bcb0ed3b3d4bf8a6e973ecbc0",
+      "previousHash": null,
+      "checkedAt": "2026-10-07T08:45:10.791Z"
+    },
+    {
+      "id": "circularise",
+      "name": "Circularise",
+      "url": "https://www.circularise.com/",
+      "type": "competitor",
+      "status": "new",
+      "httpStatus": 200,
+      "contentHash": "1ae3df66016ff2dd70e817fbdb77fd1d12d58db687923e476052d3834de60da9",
+      "previousHash": null,
+      "checkedAt": "2026-10-07T08:45:10.791Z"
+    },
+    {
+      "id": "origintrail",
+      "name": "OriginTrail",
+      "url": "https://origintrail.io/",
+      "type": "infrastructure",
+      "status": "new",
+      "httpStatus": 200,
+      "contentHash": "2fdcd1f153f97202e51a94b6035fffd1ad3c7e2b324824ffcddaa2bdc807ea6d",
+      "previousHash": null,
+      "checkedAt": "2026-10-07T08:45:10.791Z"
+    },
+    {
+      "id": "gs1-epcis",
+      "name": "GS1 EPCIS",
+      "url": "https://ref.gs1.org/standards/epcis/archive",
+      "type": "standard",
+      "status": "new",
+      "httpStatus": 200,
+      "contentHash": "bc15149e61271ba47f33e9b80062177a7935542102dd5b8d0aa03af9e3e97c9b",
+      "previousHash": null,
+      "checkedAt": "2026-10-07T08:45:10.791Z"
+    },
+    {
+      "id": "naqty-onim",
+      "name": "Минздрав: Naqty Onim",
+      "url": "https://www.gov.kz/memleket/entities/dsm/press/news/details/1004753?lang=ru",
+      "type": "local-alternative",
+      "status": "new",
+      "httpStatus": 200,
+      "contentHash": "4d1cf5cbfde36a0fefe6bf207ecebc1ce584bb5bcb0ed3b3d4bf8a6e973ecbc0",
+      "previousHash": null,
+      "checkedAt": "2026-10-07T08:45:10.791Z"
+    },
+    {
+      "id": "espr",
+      "name": "Еврокомиссия: ESPR",
+      "url": "https://environment.ec.europa.eu/strategy/circular-economy/ecodesign-sustainable-products-regulation_en",
+      "type": "regulation",
+      "status": "new",
+      "httpStatus": 200,
+      "contentHash": "82c0dc7469bced4e1595efbdbe41088e06b65996015c111dc2256330a2fdbe03",
+      "previousHash": null,
+      "checkedAt": "2026-10-07T08:45:10.791Z"
+    }
+  ]
+}

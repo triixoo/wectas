@@ -16,8 +16,8 @@ function payload(passport, record) {
     index: record.index, event: record.event, previousHash: record.previousHash };
 }
 
-export async function createPassport(product, events) {
-  const passport = { format: 'wectas-passport-v1', demo: true, network: null,
+export async function createPassport(product, events, { demo = true } = {}) {
+  const passport = { format: 'wectas-passport-v1', demo, network: null,
     product: structuredClone(product), eventCount: events.length, records: [] };
   let previousHash = '0'.repeat(64);
   for (let index = 0; index < events.length; index++) {
@@ -29,9 +29,23 @@ export async function createPassport(product, events) {
   return passport;
 }
 
+export function hasValidSchema(passport) {
+  const text = value => typeof value === 'string' && value.trim().length > 0 && value.length <= 240;
+  const hash = value => typeof value === 'string' && /^[a-f0-9]{64}$/.test(value);
+  const product = passport?.product;
+  return passport?.format === 'wectas-passport-v1' && typeof passport.demo === 'boolean' && passport.network === null &&
+    product && typeof product === 'object' && !Array.isArray(product) && Object.keys(product).length === 4 &&
+    ['name','origin','batch','category'].every(key => text(product[key])) &&
+    Number.isInteger(passport.eventCount) && passport.eventCount > 0 && passport.eventCount <= 50 &&
+    Array.isArray(passport.records) && passport.records.length === passport.eventCount &&
+    passport.records.every(record => record && typeof record === 'object' && Number.isInteger(record.index) &&
+      hash(record.hash) && hash(record.previousHash) && record.event && Object.keys(record.event).length === 4 &&
+      ['title','actor','location','date'].every(key => text(record.event[key])) &&
+      /^\d{4}-\d{2}-\d{2}$/.test(record.event.date) && Number.isFinite(Date.parse(record.event.date)));
+}
+
 export async function verifyPassport(passport) {
-  if (passport?.format !== 'wectas-passport-v1' || !passport.product ||
-      !Array.isArray(passport.records) || passport.records.length === 0 || passport.records.length !== passport.eventCount) {
+  if (!hasValidSchema(passport)) {
     return { valid: false, index: null, reason: 'Неверный формат паспорта' };
   }
   let previousHash = '0'.repeat(64);
