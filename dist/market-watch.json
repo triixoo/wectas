@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-02T12:58:00.891Z",
+  "checkedAt": "2026-11-09T13:29:26.740Z",
   "meaning": "Changes are page-level signals, not verified market facts.",
   "sources": [
     {
@@ -9,20 +9,20 @@
       "type": "market",
       "status": "changed",
       "httpStatus": 200,
-      "contentHash": "17a96270a33264ca8d3489850a74363e8a8c4a8f7ed7b855a081a72d77d28e23",
-      "previousHash": "4d1cf5cbfde36a0fefe6bf207ecebc1ce584bb5bcb0ed3b3d4bf8a6e973ecbc0",
-      "checkedAt": "2026-11-02T12:58:00.891Z"
+      "contentHash": "7bfe416f514983dfdb9e84a87ae7bdcb9775d6c8677664b2bc6e286cdb5470c1",
+      "previousHash": "17a96270a33264ca8d3489850a74363e8a8c4a8f7ed7b855a081a72d77d28e23",
+      "checkedAt": "2026-11-09T13:29:26.740Z"
     },
     {
       "id": "circularise",
       "name": "Circularise",
       "url": "https://www.circularise.com/",
       "type": "competitor",
-      "status": "unchanged",
+      "status": "changed",
       "httpStatus": 200,
-      "contentHash": "b81deadcb187797cc082bb6d02daf7360243f7aee7dc7f2204a40abd913936ac",
+      "contentHash": "1523f8f0798999848108f3cb71fb5cf9c1363ab9c4153fba9a1310090e38f33f",
       "previousHash": "b81deadcb187797cc082bb6d02daf7360243f7aee7dc7f2204a40abd913936ac",
-      "checkedAt": "2026-11-02T12:58:00.891Z"
+      "checkedAt": "2026-11-09T13:29:26.740Z"
     },
     {
       "id": "origintrail",
@@ -33,7 +33,7 @@
       "httpStatus": 200,
       "contentHash": "5c5666772af663e94edd03454d9d2ce060c34bc38a533bba75e0f342f3b7141b",
       "previousHash": "5c5666772af663e94edd03454d9d2ce060c34bc38a533bba75e0f342f3b7141b",
-      "checkedAt": "2026-11-02T12:58:00.891Z"
+      "checkedAt": "2026-11-09T13:29:26.740Z"
     },
     {
       "id": "gs1-epcis",
@@ -44,7 +44,7 @@
       "httpStatus": 200,
       "contentHash": "1b4286347eb7e5950d095c1d0909854fb33eb86a51fb026741beefaa647d23ce",
       "previousHash": "1b4286347eb7e5950d095c1d0909854fb33eb86a51fb026741beefaa647d23ce",
-      "checkedAt": "2026-11-02T12:58:00.891Z"
+      "checkedAt": "2026-11-09T13:29:26.740Z"
     },
     {
       "id": "naqty-onim",
@@ -53,9 +53,9 @@
       "type": "local-alternative",
       "status": "changed",
       "httpStatus": 200,
-      "contentHash": "d37874b22e88bdce068247acb59deca6cf8a4d118a54c9e8eda65982260ba33c",
-      "previousHash": "4d1cf5cbfde36a0fefe6bf207ecebc1ce584bb5bcb0ed3b3d4bf8a6e973ecbc0",
-      "checkedAt": "2026-11-02T12:58:00.891Z"
+      "contentHash": "272d572ba864e0034ca7279a16c5e37f18afb9c5ad92b71549071867c96c52e2",
+      "previousHash": "d37874b22e88bdce068247acb59deca6cf8a4d118a54c9e8eda65982260ba33c",
+      "checkedAt": "2026-11-09T13:29:26.740Z"
     },
     {
       "id": "espr",
@@ -66,7 +66,7 @@
       "httpStatus": 200,
       "contentHash": "82c0dc7469bced4e1595efbdbe41088e06b65996015c111dc2256330a2fdbe03",
       "previousHash": "82c0dc7469bced4e1595efbdbe41088e06b65996015c111dc2256330a2fdbe03",
-      "checkedAt": "2026-11-02T12:58:00.891Z"
+      "checkedAt": "2026-11-09T13:29:26.740Z"
     }
   ]
 }
