@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-16T13:15:03.809Z",
+  "checkedAt": "2026-11-23T15:32:09.106Z",
   "meaning": "Changes are page-level signals, not verified market facts.",
   "sources": [
     {
@@ -9,9 +9,9 @@
       "type": "market",
       "status": "changed",
       "httpStatus": 200,
-      "contentHash": "f21d858924d448282efe023782e818a995dc193362df809c26f5b056445fdfff",
-      "previousHash": "7bfe416f514983dfdb9e84a87ae7bdcb9775d6c8677664b2bc6e286cdb5470c1",
-      "checkedAt": "2026-11-16T13:15:03.809Z"
+      "contentHash": "7b9e21c9ba50ae7b187e6afcb4f0cfe8e24e5e74274bef49059815226c513569",
+      "previousHash": "f21d858924d448282efe023782e818a995dc193362df809c26f5b056445fdfff",
+      "checkedAt": "2026-11-23T15:32:09.106Z"
     },
     {
       "id": "circularise",
@@ -22,7 +22,7 @@
       "httpStatus": 200,
       "contentHash": "1523f8f0798999848108f3cb71fb5cf9c1363ab9c4153fba9a1310090e38f33f",
       "previousHash": "1523f8f0798999848108f3cb71fb5cf9c1363ab9c4153fba9a1310090e38f33f",
-      "checkedAt": "2026-11-16T13:15:03.809Z"
+      "checkedAt": "2026-11-23T15:32:09.106Z"
     },
     {
       "id": "origintrail",
@@ -33,7 +33,7 @@
       "httpStatus": 200,
       "contentHash": "5c5666772af663e94edd03454d9d2ce060c34bc38a533bba75e0f342f3b7141b",
       "previousHash": "5c5666772af663e94edd03454d9d2ce060c34bc38a533bba75e0f342f3b7141b",
-      "checkedAt": "2026-11-16T13:15:03.809Z"
+      "checkedAt": "2026-11-23T15:32:09.106Z"
     },
     {
       "id": "gs1-epcis",
@@ -44,7 +44,7 @@
       "httpStatus": 200,
       "contentHash": "1b4286347eb7e5950d095c1d0909854fb33eb86a51fb026741beefaa647d23ce",
       "previousHash": "1b4286347eb7e5950d095c1d0909854fb33eb86a51fb026741beefaa647d23ce",
-      "checkedAt": "2026-11-16T13:15:03.809Z"
+      "checkedAt": "2026-11-23T15:32:09.106Z"
     },
     {
       "id": "naqty-onim",
@@ -53,9 +53,9 @@
       "type": "local-alternative",
       "status": "changed",
       "httpStatus": 200,
-      "contentHash": "382bab7249984e7fa3304393557cb4215ea141b23e7f48fe14bfcd94548633ec",
-      "previousHash": "272d572ba864e0034ca7279a16c5e37f18afb9c5ad92b71549071867c96c52e2",
-      "checkedAt": "2026-11-16T13:15:03.809Z"
+      "contentHash": "e8718c091b998137c09318d79c90f96c2cc6d1505d1b209326f26f1fba809fef",
+      "previousHash": "382bab7249984e7fa3304393557cb4215ea141b23e7f48fe14bfcd94548633ec",
+      "checkedAt": "2026-11-23T15:32:09.106Z"
     },
     {
       "id": "espr",
@@ -66,7 +66,7 @@
       "httpStatus": 200,
       "contentHash": "82c0dc7469bced4e1595efbdbe41088e06b65996015c111dc2256330a2fdbe03",
       "previousHash": "82c0dc7469bced4e1595efbdbe41088e06b65996015c111dc2256330a2fdbe03",
-      "checkedAt": "2026-11-16T13:15:03.809Z"
+      "checkedAt": "2026-11-23T15:32:09.106Z"
     }
   ]
 }
